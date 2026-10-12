@@ -2,6 +2,8 @@
 
 Sistema web para reservar los espacios del auditorio de la institución: B1, B2 y B3. Los usuarios piden una reserva, la administración la aprueba o la rechaza, y todo queda registrado con sus correos, recibos y estadísticas.
 
+![Pantalla de inicio de sesión](docs/img/login.jpg)
+
 Una regla propia del auditorio: B3 es la unión de B1 y B2. Si alguien reserva B3 se ocupan los dos espacios, y si alguien reserva B1 o B2, B3 queda bloqueado en ese horario.
 
 ## Equipo

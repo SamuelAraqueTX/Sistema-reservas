@@ -1,0 +1,26 @@
+# Credenciales y configuración local
+LOGIN/config.local.php
+.env
+
+# Logs y archivos generados
+*.log
+*.out
+*.err
+*.pid
+mail_log.txt
+roles_cookies.txt
+runtime_links.json
+tunnel_*.txt
+cloudflared*.log
+
+# Binario del túnel (descargar aparte, ver README)
+cloudflared.exe
+
+# Herramientas de IDE/IA
+.claude/
+.sixth/
+.vscode/
+.idea/
+
+# Dependencias reinstalables (opcional: quita esta línea si quieres versionar vendor/)
+# LOGIN/api/vendor/

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Reservas Poli</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <section class="hero-panel">
+            <img src="assets/img/poli-edificio.jpg" alt="Politécnico Grancolombiano" class="hero-foto" onerror="this.style.display='none'">
+        </section>
+
+        <div class="container">
+            <div class="brand-block">
+                <img src="logo.png" alt="Logo Universidad" class="brand-logo-img">
+                <div>
+                    <h2>Reservas Poli</h2>
+                    <p>Panel de gestión de espacios</p>
+                </div>
+            </div>
+
+            <!-- Formulario: Iniciar sesión -->
+            <div class="form sign-up-container">
+                <form class="formulario">
+                    <h2>Iniciar sesión</h2>
+                    <div class="inputs">
+                        <input type="email" class="box" placeholder="Correo electrónico" id="email" autocomplete="username">
+                        <div class="password-wrapper">
+                            <input type="password" class="box" placeholder="Contraseña" id="password" autocomplete="current-password">
+                            <span class="toggle-password" data-target="password">👁️</span>
+                        </div>
+                        <p id="login-error-msg" class="login-error-msg" style="display:none;"></p>
+                        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                        <a href="#" class="ok-account">¿No tienes cuenta? Regístrate</a>
+                        <input type="submit" value="Iniciar sesión" class="submit">
+                    </div>
+                </form>
+
+                <!-- Recuperar contraseña: paso 1 (enviar código) -->
+                <div class="forgot-form" id="forgot-step1">
+                    <h3>Recuperar contraseña</h3>
+                    <p class="forgot-desc">Ingresa tu correo y te enviaremos un código de verificación.</p>
+                    <input type="email" class="box" id="forgot-email" placeholder="Correo electrónico" autocomplete="email">
+                    <p id="forgot-step1-msg" class="forgot-inline-msg"></p>
+                    <div class="forgot-form-actions">
+                        <button type="button" class="btn-secondary" id="btn-forgot-cancel">Cancelar</button>
+                        <button type="button" class="btn-primary-sm" id="btn-enviar-codigo">Enviar código</button>
+                    </div>
+                </div>
+
+                <!-- Recuperar contraseña: paso 2 (verificar código + nueva contraseña) -->
+                <div class="forgot-form" id="forgot-step2">
+                    <h3>Verifica tu identidad</h3>
+                    <p class="forgot-desc">Ingresa el código de 6 dígitos que enviamos a <strong id="forgot-email-label"></strong></p>
+                    <input type="text" class="box" id="forgot-codigo" placeholder="Código de 6 dígitos"
+                           maxlength="6" inputmode="numeric" autocomplete="one-time-code">
+                    <div class="password-wrapper">
+                        <input type="password" class="box" id="forgot-new-pass" placeholder="Nueva contraseña (mín. 8 caracteres)" autocomplete="new-password">
+                        <span class="toggle-password" data-target="forgot-new-pass">👁️</span>
+                    </div>
+                    <div class="password-wrapper">
+                        <input type="password" class="box" id="forgot-confirm-pass" placeholder="Confirmar nueva contraseña" autocomplete="new-password">
+                        <span class="toggle-password" data-target="forgot-confirm-pass">👁️</span>
+                    </div>
+                    <p id="forgot-step2-msg" class="forgot-inline-msg"></p>
+                    <div class="forgot-form-actions">
+                        <button type="button" class="btn-secondary" id="btn-forgot-back">Volver</button>
+                        <button type="button" class="btn-primary-sm" id="btn-forgot-submit">Cambiar contraseña</button>
+                    </div>
+                    <p class="forgot-resend">¿No recibiste el código?
+                        <a href="#" id="btn-reenviar-codigo">Reenviar</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Formulario: Crear cuenta — Paso 1 -->
+            <div class="form sign-in-container">
+                <div id="reg-step1">
+                    <h2>Crear cuenta</h2>
+                    <div class="inputs">
+                        <input type="text" class="box" placeholder="Nombre completo" id="name" autocomplete="name">
+                        <input type="email" class="box" placeholder="Correo electrónico" id="email2" autocomplete="email">
+                        <div class="password-wrapper">
+                            <input type="password" class="box" placeholder="Contraseña" id="password2" autocomplete="new-password">
+                            <span class="toggle-password" data-target="password2">👁️</span>
+                        </div>
+                        <div class="password-wrapper">
+                            <input type="password" class="box" placeholder="Confirmar contraseña" id="confirm_password" autocomplete="new-password">
+                            <span class="toggle-password" data-target="confirm_password">👁️</span>
+                        </div>
+                        <select class="box" id="rol">
+                            <option value="" disabled selected>Selecciona tu rol</option>
+                            <option value="docente">Docente</option>
+                            <option value="logística">Logística</option>
+                            <option value="infraestructura">Infraestructura</option>
+                            <option value="medios audiovisuales">Medios audiovisuales</option>
+                            <option value="externo">Externo</option>
+                        </select>
+<p class="registro-nota">¿Eres administrador o practicante-administrativo? Contacta al área de sistemas.</p>
+                        <p id="reg-step1-msg" class="forgot-inline-msg"></p>
+                        <a href="#" class="no-account">Volver a iniciar sesión</a>
+                        <button type="button" class="submit" id="btn-enviar-verif" style="cursor:pointer;">Verificar correo</button>
+                    </div>
+                </div>
+
+                <!-- Paso 2: ingresar código -->
+                <div id="reg-step2" style="display:none;">
+                    <h2>Verificar correo</h2>
+                    <div class="inputs">
+                        <p class="forgot-desc">
+                            Enviamos un código de 6 dígitos a <strong id="reg-email-label"></strong>.<br>
+                            Ingrésalo para completar tu registro.
+                        </p>
+                        <input type="text" class="box codigo-box" id="reg-codigo"
+                               placeholder="Código de 6 dígitos"
+                               maxlength="6" inputmode="numeric" autocomplete="one-time-code">
+                        <p id="reg-step2-msg" class="forgot-inline-msg"></p>
+                        <div style="display:flex;gap:8px;margin-top:4px;">
+                            <button type="button" class="btn-secondary" id="btn-reg-volver">← Volver</button>
+                            <button type="button" class="btn-primary-sm" id="btn-reg-submit" style="flex:1;">Crear cuenta</button>
+                        </div>
+                        <p class="forgot-resend" style="margin-top:12px;">
+                            ¿No llegó el código? <a href="#" id="btn-reenviar-verif">Reenviar</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="notify check_notify">EXITO</p>
+    <p class="notify error_notify">ERROR</p>
+    <script src="js/script.js"></script>
+</body>
+</html>

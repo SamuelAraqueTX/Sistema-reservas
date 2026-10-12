@@ -1,0 +1,4 @@
+# Bloquea el acceso web a archivos que no son endpoints
+<FilesMatch "\.(sql|log|txt|lock|json|md)$">
+    Require all denied
+</FilesMatch>
